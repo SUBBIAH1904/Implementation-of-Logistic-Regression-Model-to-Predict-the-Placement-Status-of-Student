@@ -67,6 +67,50 @@ data1["status"]=le.fit_transform(data1["status"])
 data1
 ~~~
 ![image](https://github.com/user-attachments/assets/410538ce-2548-4121-945b-c7676e121438)
+~~~
+x=data1.iloc[:,:-1]
+x
+~~~
+![image](https://github.com/user-attachments/assets/15e18992-c462-4c49-9de4-81cb14656dd9)
+~~~
+y=data1["status"]
+y
+~~~
+![image](https://github.com/user-attachments/assets/f1985f00-5659-4539-8b0a-953ae6d209f7)
+~~~
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
+~~~
+~~~
+from sklearn.linear_model import LogisticRegression
+lr=LogisticRegression(solver="liblinear")
+lr.fit(x_train,y_train)
+y_pred=lr.predict(x_test)
+y_pred
+~~~
+![image](https://github.com/user-attachments/assets/c19409d8-0e9c-45d8-8193-78be87d0ed40)
+~~~
+from sklearn.metrics import accuracy_score
+accuracy=accuracy_score(y_test,y_pred)
+print("Accuracy=",accuracy)
+~~~
+![image](https://github.com/user-attachments/assets/31e3ef80-2575-40f7-a9be-99d5efc8fc48)
+~~~
+from sklearn.metrics import confusion_matrix
+confusion_matrix=confusion_matrix(y_test,y_pred)
+confusion_matrix
+~~~
+![image](https://github.com/user-attachments/assets/f8a757fc-b73f-4082-b9bb-a3f7426a9cff)
+~~~
+from sklearn.metrics import classification_report
+classification_report=classification_report(y_test,y_pred)
+print(classification_report)
+~~~
+![image](https://github.com/user-attachments/assets/72216b41-de4a-4c4d-acf8-c19c99c7db42)
+~~~
+lr.predict([[1,80,1,90,1,1,90,1,0,85,1,85]])
+~~~
+![image](https://github.com/user-attachments/assets/4b3cf775-6cca-4943-8623-0fd09d8137cc)
 
 ## Result:
 Thus the program to implement the the Logistic Regression Model to Predict the Placement Status of Student is written and verified using python programming.
